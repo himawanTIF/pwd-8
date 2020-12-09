@@ -1,18 +1,20 @@
 <?php
+// Menyisipkan library FPDF
 require('fpdf/fpdf.php');
-
+// instance objek dan mengatur halaman PDF
 $pdf = new FPDF('l','mm','A5');
-
+// Membuat halaman baru
 $pdf->AddPage();
-
+// Atur jenis font yang digunakan
 $pdf->SetFont('Arial','B',16);
-
+// Mencetak string
 $pdf->Cell(190,7,'PROGRAM STUDI TEKNIK INFORMATIKA',0,1,'C');
 $pdf->SetFont('Arial','B',12);
 $pdf->Cell(190,7,'DAFTAR MAHASISWA MAKUL PEMROGRAMAN WEB DINAMIS',0,1,'C');
 
+// Memberikan jarak kebawah agar tidak terlalu rapat 
 $pdf->Cell(10,7,'',0,1);
-
+// Membuat Tabel
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(20,6,'NIM',1,0);
 $pdf->Cell(50,6,'NAMA MAHASISWA',1,0);
@@ -20,9 +22,8 @@ $pdf->Cell(25,6,'J KEL',1,0);
 $pdf->Cell(50,6,'ALAMAT',1,0);
 $pdf->Cell(30,6,'TANGGAL LHR',1,1);
 
-
 $pdf->SetFont('Arial','',10);
-
+// Menampilkan isi tabel
 include 'koneksi.php';
 $mahasiswa = mysqli_query($con, "SELECT * FROM mahasiswa");
 while ($row = mysqli_fetch_array($mahasiswa)) {
@@ -32,6 +33,6 @@ while ($row = mysqli_fetch_array($mahasiswa)) {
     $pdf->Cell(50,6,$row['alamat'],1,0);
     $pdf->Cell(30,6,$row['tgllhr'],1,1);
 }
-
+// Fungsi untuk mencetak halaman
 $pdf->Output();
 ?>
