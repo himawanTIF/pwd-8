@@ -16,7 +16,7 @@ $result = mysqli_query($con, "SELECT * FROM mahasiswa");
 
 <body>
     <a href="tambah.php"><button type="submit">Tambah Data Baru</button></a>
-    <a href="lap_mhs.php"><button type="submit">Cetak</button></a>
+    <a href="lap_mhs.php"><button type="submit">Cetak PDF</button></a>
     <br><br>
     <table width="80%" border="1">
         <tr>
